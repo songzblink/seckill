@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zbsong.dao.SeckillMapper">
+    <!--这里需要提供命名空间，与下面语句的id一起组成查询的标识，必须是完整的路径-->
+
+    <update id="reduceNumber">
+        UPDATE seckill
+        SET number = number-1
+        WHERE seckill_id=#{seckillId}
+        AND start_time <![CDATA[ <= ]]> #{killTime}
+        AND end_time >= #{killTime}
+        AND number > 0
+    </update>
+
+    <select id="queryById" resultType="seckill" parameterType="long">
+        SELECT * FROM seckill
+        WHERE seckill_id=#{seckillId};
+    </select>
+
+    <select id="queryAll" resultType="seckill">
+        SELECT * FROM seckill
+        ORDER BY create_time DESC
+        limit #{offset},#{limit};
+    </select>
+</mapper>

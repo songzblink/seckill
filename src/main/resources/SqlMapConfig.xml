@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 上面为约束头-->
+<configuration>
+    <settings>
+        <!--
+        使用jdbc的getGeneratekeys获取自增主键值
+        即当插入的类对象不包含主键时，自动获取自增主键值并赋值给要插入的类对象
+        -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--开启驼峰命名转换Table:create_time到 Entity(createTime)-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <!--        <typeAlias type="com.songzb.domain.Account" alias="account"/>-->
+        <!--        这样配置的话，该包下面的类都会有别名，别名为首字母小写的类名-->
+        <package name="top.zbsong.pojo"/>
+    </typeAliases>
+
+    <mappers>
+        <package name="top.zbsong.dao"/>
+    </mappers>
+</configuration>
