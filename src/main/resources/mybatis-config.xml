@@ -12,13 +12,13 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
-    <typeAliases>
-        <!--        <typeAlias type="com.songzb.domain.Account" alias="account"/>-->
-        <!--        这样配置的话，该包下面的类都会有别名，别名为首字母小写的类名-->
-        <package name="top.zbsong.pojo"/>
-    </typeAliases>
+<!--    <typeAliases>-->
+<!--        &lt;!&ndash;        <typeAlias type="com.songzb.domain.Account" alias="account"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        这样配置的话，该包下面的类都会有别名，别名为首字母小写的类名&ndash;&gt;-->
+<!--        <package name="top.zbsong.pojo"/>-->
+<!--    </typeAliases>-->
 
-    <mappers>
-        <package name="top.zbsong.dao"/>
-    </mappers>
+<!--    <mappers>-->
+<!--        <package name="top.zbsong.dao"/>-->
+<!--    </mappers>-->
 </configuration>
