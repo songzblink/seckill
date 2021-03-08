@@ -9,6 +9,7 @@
     <!--配置整合mybatis过程-->
     <!--1.关联数据库配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
+
     <!--2.配置数据源信息-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!--配置连接池属性-->
