@@ -1,5 +1,6 @@
 package top.zbsong.dto;
 
+import top.zbsong.enums.SeckillStatEnum;
 import top.zbsong.pojo.SuccessKilled;
 
 /**
@@ -26,22 +27,32 @@ public class SeckillExecution {
     private SuccessKilled successKilled;
 
     /**
-     * 秒杀成功返回所有信息
+     * 秒杀成功返回秒杀明细信息
      */
-    public SeckillExecution(long seckillId, int state, String stateInfo, SuccessKilled successKilled) {
+    public SeckillExecution(long seckillId, SeckillStatEnum statEnum, SuccessKilled successKilled) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getInfo();
         this.successKilled = successKilled;
     }
 
     /**
      * 秒杀失败
      */
-    public SeckillExecution(long seckillId, int state, String stateInfo) {
+    public SeckillExecution(long seckillId, SeckillStatEnum statEnum) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getInfo();
+    }
+
+    @Override
+    public String toString() {
+        return "SeckillExecution{" +
+                "seckillId=" + seckillId +
+                ", state=" + state +
+                ", stateInfo='" + stateInfo + '\'' +
+                ", successKilled=" + successKilled +
+                '}';
     }
 
     public long getSeckillId() {
