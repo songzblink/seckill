@@ -14,12 +14,6 @@
     </properties>
 
     <dependencies>
-        <!--Swagger-UI API文档生产工具-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-        </dependency>
         <!--单元测试-->
         <dependency>
             <groupId>junit</groupId>
