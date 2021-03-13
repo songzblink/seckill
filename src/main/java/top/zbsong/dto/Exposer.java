@@ -35,12 +35,28 @@ public class Exposer {
      */
     private long end;
 
+    /**
+     * 开启秒杀成功，返回true，seckillId对应的md5，seckillId
+     *
+     * @param exposed
+     * @param md5
+     * @param seckillId
+     */
     public Exposer(boolean exposed, String md5, long seckillId) {
         this.exposed = exposed;
         this.md5 = md5;
         this.seckillId = seckillId;
     }
 
+    /**
+     * 若秒杀暂未开启则返回false、seckillId和当前系统时间、秒杀开启时间、秒杀结束时间
+     *
+     * @param exposed
+     * @param seckillId
+     * @param now
+     * @param start
+     * @param end
+     */
     public Exposer(boolean exposed, long seckillId, long now, long start, long end) {
         this.exposed = exposed;
         this.seckillId = seckillId;
@@ -49,9 +65,27 @@ public class Exposer {
         this.end = end;
     }
 
+    /**
+     * 未查询到则返回false和seckillId
+     *
+     * @param exposed
+     * @param seckillId
+     */
     public Exposer(boolean exposed, long seckillId) {
         this.exposed = exposed;
         this.seckillId = seckillId;
+    }
+
+    @Override
+    public String toString() {
+        return "Exposer{" +
+                "exposed=" + exposed +
+                ", md5='" + md5 + '\'' +
+                ", seckillId=" + seckillId +
+                ", now=" + now +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
     }
 
     public boolean isExposed() {
