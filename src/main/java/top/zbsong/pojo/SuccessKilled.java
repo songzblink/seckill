@@ -1,6 +1,5 @@
 package top.zbsong.pojo;
 
-import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
@@ -8,13 +7,13 @@ import java.util.Date;
  * Create By songzb on 2021/3/6
  */
 public class SuccessKilled {
-    @ApiModelProperty("秒杀商品ID")
+    // 秒杀商品ID
     private long seckillId;
-    @ApiModelProperty("用户手机号")
+    // 用户手机号
     private long userPhone;
-    @ApiModelProperty("状态标识：-1:无效 0:成功 1:已付款 2:已发货")
+    // 状态标识：-1:无效 0:成功 1:已付款 2:已发货
     private boolean state;
-    @ApiModelProperty("创建时间")
+    // 创建时间
     private Date createTime;
 
     @Override

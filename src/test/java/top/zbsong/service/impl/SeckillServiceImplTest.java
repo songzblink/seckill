@@ -86,6 +86,5 @@ public class SeckillServiceImplTest {
         } else {
             System.out.println(exposer);
         }
-
     }
 }
