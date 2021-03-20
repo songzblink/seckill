@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import top.zbsong.dao.SeckillMapper;
 import top.zbsong.dao.SuccessKilledMapper;
+import top.zbsong.dao.cache.RedisMapper;
 import top.zbsong.dto.Exposer;
 import top.zbsong.dto.SeckillExecution;
 import top.zbsong.enums.SeckillStatEnum;
@@ -43,14 +44,31 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private SuccessKilledMapper successKilledMapper;
 
+    /**
+     * 注入redisMapper
+     */
+    @Autowired
+    private RedisMapper redisMapper;
+
+    public void setRedisMapper(RedisMapper redisMapper) {
+        this.redisMapper = redisMapper;
+    }
+
+
     @Override
     public List<Seckill> getSeckillList() {
         return seckillMapper.queryAll(0, 4);
     }
 
+    /**
+     * 修改查询逻辑，优先查询Redis
+     *
+     * @return
+     */
     @Override
     public Seckill getById(long seckillId) {
-        return seckillMapper.queryById(seckillId);
+        // return seckillMapper.queryById(seckillId);
+        return redisMapper.getOrPutSeckill(seckillId, id -> seckillMapper.queryById(id));
     }
 
     @Override
@@ -84,6 +102,7 @@ public class SeckillServiceImpl implements SeckillService {
      * 1.开发团队达成一致约定，明确标注事务方法的编程风格
      * 2.保证事务方法的执行时间尽可能短，不要穿插其他网络操作RPC/HTTP请求或者剥离到事务方法外部
      * 3.不是所有的方法都需要事务，如只有一条修改操作、只读操作不要事务控制
+     *
      * @param seckillId
      * @param userPhone
      * @param md5
